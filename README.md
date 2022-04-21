@@ -2,7 +2,7 @@
  Object Detection Drone Project (Projeto de Drone para Detecção de Objetos)
 
 # This video shows how the code works:
-encr.pw/jhqbb
+https://encr.pw/jhqbb
 
 # PS3 Joystick:
 To use the PS3 joystick to control the drone, I configured the keyboard keys programmed in
