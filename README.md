@@ -4,7 +4,7 @@
 # This video shows how the code works:
 encr.pw/jhqbb
 
-#PS3 Joystick
+#PS3 Joystick:
 To use the PS3 joystick to control the drone, I configured the keyboard keys programmed in
 this code to be recognized when pressing the Joystick buttons. It was necessary to use the 
 "JoyToKey" software which can be found at this link:
