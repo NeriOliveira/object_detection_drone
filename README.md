@@ -11,10 +11,13 @@ encr.pw/jhqbb
 https://joytokey.net/en/download
 
 # Descriptions:
-## Python 3.7
-## IDE: PyCharm 3.2
-## Dataset: COCO v2020
+
+- Python 3.7
+- PyCharm 3.2 (IDE)
+- COCO v2020 (Dataset)
+
 ## Librarys:
-### OpenCV
-### PyGame
-### DJI Tello Py
+- CVZONE
+- OpenCV
+- PyGame
+- DJI Tello Py

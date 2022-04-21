@@ -5,11 +5,8 @@ import cv2
 import time
 import cvzone
 
-thres = 0.55
+thres = 0.6
 nmsThres = 0.2
-# cap = cv2.VideoCapture(0) #This is for the Webcam tests
-# cap.set(3, 640) #This is for the Webcam tests
-# cap.set(4, 480) #This is for the Webcam tests
 
 classNames = []
 classFile = 'coco.names'
@@ -33,9 +30,6 @@ global img
 me.streamoff()
 me.streamon()
 
-#me.takeoff()
-#me.move_up(80)
-
 def getKeyboardInput():
     lr, fb, ud, yv = 0, 0, 0, 0
     speed = 50
@@ -56,18 +50,18 @@ def getKeyboardInput():
     if kp.getKey("e"): me.takeoff()
 
     if kp.getKey("z"):
-        cv2.imwrite(f'Resources/Images/{time.time()}.jpg', img)
+        cv2.imwrite(f'ImagesCaptured/{time.time()}.jpg', img)
         time.sleep(0.3)
 
     return [lr, fb, ud, yv]
 
 
 while True:
-    # success, img = cap.read() #This is for the Webcam tests
     img = me.get_frame_read().frame
     classIds, confs, bbox = net.detect(img, confThreshold=thres, nmsThreshold=nmsThres)
     try:
         for classId, conf, box in zip(classIds.flatten(), confs.flatten(), bbox):
+            print(classId, conf, box)
             cvzone.cornerRect(img, box)
             cv2.putText(img, f'{classNames[classId - 1].upper()} {round(conf * 100, 2)}',
                         (box[0] + 10, box[1] + 30), cv2.FONT_HERSHEY_COMPLEX_SMALL,
@@ -75,10 +69,8 @@ while True:
     except:
         pass
 
-
     vals = getKeyboardInput()
     me.send_rc_control(vals[0], vals[1], vals[2], vals[3])
-    img = me.get_frame_read().frame
     img = cv2.resize(img, (720, 480))
 
     cv2.imshow("Image", img)
